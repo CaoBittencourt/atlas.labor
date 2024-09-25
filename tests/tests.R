@@ -1,22 +1,29 @@
 # data
 n <- 873
 W <- 167000000
-w_q <- runif(873)
-w_q <- W * w_q / sum(w_q)
-w_q <- ceiling(w_q)
-T_kq <- runif(n)
-h_kq <- runif(n)
+w <- rlnorm(873)
+w <- W * w / sum(w)
+w <- ceiling(w)
+T_k <- runif(n)
+h_k <- runif(n)
 
 # task duration function
 ttc <- function(l){exp(l)}
+list_ttc <- replicate(n, ttc)
 
-# aggregate time allocation in infinitely stratified labor market
-wtildeq <- function(ttc_q, Tk_q, p_q = Inf){}
+plot(ttc, 0, 1)
 
-TA(lmin = 0, lmax = T_kq, ttc)
+wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc, w = w, agg = T)
+wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc, w = w, agg = F)
 
-integrate(ttc, 0, 1) -> dsds
-
-dsds$value
+wtilde(
+  h_k = h_k,
+  T_k = T_k,
+  list_ttc = list_ttc,
+  w = w,
+  agg = F
+) |>
+  density() |>
+  plot()
 
 # aggregate time allocation in maximally stratified labor market
