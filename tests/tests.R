@@ -16,6 +16,9 @@ plot(ttc, 0, 1)
 wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc, w = w, agg = T)
 wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc, w = w, agg = F)
 
+wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc[1], w = w, agg = T)
+wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc[1], w = w, agg = F)
+
 wtilde(
   h_k = h_k,
   T_k = T_k,

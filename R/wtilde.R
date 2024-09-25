@@ -1,3 +1,4 @@
+# employability
 wtilde <- function(h_k, T_k, list_ttc, w, p = Inf, agg = T){
 
   # employability in infinitely stratified labor market
