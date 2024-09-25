@@ -46,24 +46,20 @@ list_ttc <- replicate(n, ttc)
 plot(ttc, 0, 1)
 
 # employability
-wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc, w = w, agg = T)
-wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc[1], w = w, agg = T)
-all(
-  wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc, w = w, agg = T) ==
-    wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc[1], w = w, agg = T)
-)
+wtilde(h_k = h_k, T_k = T_k, ttc = ttc, w = w, agg = T)
+wtilde(h_k = h_k, T_k = T_k, ttc = list_ttc, w = w, agg = T)
+wtilde(h_k = h_k, T_k = T_k, ttc = list_ttc[1], w = w, agg = T)
+wtilde(h_k = h_k, T_k = T_k, ttc = list_ttc[[1]], w = w, agg = T)
 
-wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc, w = w, agg = F)
-wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc[1], w = w, agg = F)
-all(
-  wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc, w = w, agg = F) ==
-    wtilde(h_k = h_k, T_k = T_k, list_ttc = list_ttc[1], w = w, agg = F)
-)
+wtilde(h_k = h_k, T_k = T_k, ttc = ttc, w = w, agg = F)
+wtilde(h_k = h_k, T_k = T_k, ttc = list_ttc, w = w, agg = F)
+wtilde(h_k = h_k, T_k = T_k, ttc = list_ttc[1], w = w, agg = F)
+wtilde(h_k = h_k, T_k = T_k, ttc = list_ttc[[1]], w = w, agg = F)
 
 wtilde(
   h_k = h_k,
   T_k = T_k,
-  list_ttc = list_ttc,
+  ttc = list_ttc,
   w = w,
   agg = F
 ) |>
@@ -76,3 +72,6 @@ vstilde(h_q = h_q, T_q = T_q, u_qk = u_qk, u_qq = u_qq, ttc = ttc, w = w, agg = 
 
 vstilde(h_q = h_q, T_q = T_q, u_qk = u_qk, u_qq = u_qq, ttc = list_ttc[[1]], w = w, agg = T)
 vstilde(h_q = h_q, T_q = T_q, u_qk = u_qk, u_qq = u_qq, ttc = list_ttc[[1]], w = w, agg = F)
+
+vstilde(h_q = h_q, T_q = T_q, u_qk = u_qk, u_qq = u_qq, ttc = list_ttc[1], w = w, agg = T)
+vstilde(h_q = h_q, T_q = T_q, u_qk = u_qk, u_qq = u_qq, ttc = list_ttc[1], w = w, agg = F)

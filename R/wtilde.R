@@ -1,10 +1,16 @@
 # employability
-wtilde <- function(h_k, T_k, list_ttc, w, p = Inf, agg = T){
+wtilde <- function(h_k, T_k, ttc, w, p = Inf, agg = T){
+
+  if(is.function(ttc)){
+
+    list(ttc) -> ttc
+
+  }
 
   # employability in infinitely stratified labor market
   if(p == Inf){
 
-    h_k * Omega(0, T_k, list_ttc) -> employability
+    h_k * Omega(0, T_k, ttc) -> employability
 
   }
 
