@@ -1,6 +1,6 @@
 # minimum productivity requirements distribution
 dist_Tmin <- function(Tmin, w, absolute = T){
-
+o
   # assert args
   stopifnot("'Tmin' and 'w' must be the same length.") = c(length(Tmin) == length(w))
 
@@ -20,7 +20,7 @@ dist_Tmin <- function(Tmin, w, absolute = T){
     w <- ceiling(w)
 
     # minimum productivity distribution
-    rep(Tmin, times = w) ->
+    rep(Tmin, times = w) -> required_talent
 
   }
 

@@ -113,3 +113,8 @@ vstilde(
   plot(
     xlim = c(0,1)
   )
+
+# minimum required productivity distribution
+l_bounds <- seq(0, 1, length.out = sample(seq(1, n + 1), 1))[-1]
+
+dist_Tmin()
