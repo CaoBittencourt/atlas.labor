@@ -27,6 +27,8 @@ Map(
 
 
 # data
+set.seed(777)
+
 n <- 873
 W <- 167000000
 w <- rlnorm(873)
@@ -118,3 +120,4 @@ vstilde(
 l_bounds <- seq(0, 1, length.out = sample(seq(1, n + 1), 1))[-1]
 
 dist_Tmin()
+
