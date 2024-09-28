@@ -1,29 +1,36 @@
 # imports
-library(devtools)
+setwd('/home/Cao/Storage/github/atlas.labor/R')
+source('./ta.R')
+source('./Omega.R')
+source('./wtilde.R')
+source('./vstilde.R')
+source('./pec.R')
+# source('./require.R')
 
-c(
-  'CaoBittencourt' = 'atlas.labor'
-) -> git_pkgs
-
-Map(
-  function(git, profile){
-
-    if(!require(git, character.only = T)){
-
-      install_github(
-        paste0(profile, '/', git)
-        , upgrade = F
-        , force = T
-      )
-
-    }
-
-    require(git, character.only = T)
-
-  }
-  , git = git_pkgs
-  , profile = names(git_pkgs)
-)
+# library(devtools)
+# c(
+#   'CaoBittencourt' = 'atlas.labor'
+# ) -> git_pkgs
+#
+# Map(
+#   function(git, profile){
+#
+#     if(!require(git, character.only = T)){
+#
+#       install_github(
+#         paste0(profile, '/', git)
+#         , upgrade = F
+#         , force = T
+#       )
+#
+#     }
+#
+#     require(git, character.only = T)
+#
+#   }
+#   , git = git_pkgs
+#   , profile = names(git_pkgs)
+# )
 
 
 # data
@@ -115,6 +122,13 @@ vstilde(
   plot(
     xlim = c(0,1)
   )
+
+# proportional employment condition
+pec_l(lmin = 0, wtilde = 1, ttc)
+pec_l(lmin = 0, wtilde = 0.67, ttc)
+
+pec_w(0, 1, ttc)
+
 
 # minimum required productivity distribution
 l_bounds <- seq(0, 1, length.out = sample(seq(1, n + 1), 1))[-1]

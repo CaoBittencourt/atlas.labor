@@ -1,5 +1,5 @@
 # aggregate time allocation
-Omega <- function(lmin, lmax, ttc = function(l){l}){
+Omega <- function(lmin = 0, lmax = 1, ttc = function(l){l}){
 
   # args validation
   stopifnot("'lmin' <= 'lmax' must be responsibility bounds defined in the unit interval." = all(
@@ -22,4 +22,4 @@ Omega <- function(lmin, lmax, ttc = function(l){l}){
 }
 
 # vectorized aggregate time allocation
-Omega <- Vectorize(Omega, vectorize.args = c('lmin', 'lmax', 'ttc') )
+Omega_vec <- Vectorize(Omega, vectorize.args = c('lmin', 'lmax', 'ttc'))

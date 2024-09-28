@@ -3,6 +3,9 @@
 [x] competitiveness function v1
 
 [x] productivity requirements function v1
-[ ] pec employment levels function v1
-[ ] pec responsibility boudns function v1
+[x] pec employment levels function v1
+[x] pec responsibility boudns function v1
+
+[ ] vectorize pec
+
 [ ] monte carlo method for optimizing p_q, w_vq
