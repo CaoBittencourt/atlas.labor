@@ -4,5 +4,5 @@
 
 [x] productivity requirements function v1
 [ ] pec employment levels function v1
-[ ] pec responsability boudns function v1
+[ ] pec responsibility boudns function v1
 [ ] monte carlo method for optimizing p_q, w_vq

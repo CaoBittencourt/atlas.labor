@@ -1,6 +1,6 @@
 # minimum productivity requirements distribution
 dist_Tmin <- function(Tmin, w, absolute = T){
-o
+
   # assert args
   stopifnot("'Tmin' and 'w' must be the same length.") = c(length(Tmin) == length(w))
 

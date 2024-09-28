@@ -1,5 +1,5 @@
 1. calculate employability in efficient markets given a p_q in [1, Inf] level of labor stratification
 2. calculate Competitiveness in efficient markets given a p_q in [1, Inf] level of labor stratification
 3. calculate optimal stratification levels using monte carlo methods
-4. calculate optimal responsability bounds using monte carlo methods
+4. calculate optimal responsibility bounds using monte carlo methods
 5. calculate optimal employment levels using monte carlo methods

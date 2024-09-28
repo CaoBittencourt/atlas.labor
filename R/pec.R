@@ -1,5 +1,5 @@
 # proportional employment condition (pec)
-# given the pec and a vector of employment levels w, determine optimal responsability bounds l
+# given the pec and a vector of employment levels w, determine optimal responsibility bounds l
 pec_l <- function(w, ttc){
 
   # assert args
@@ -18,7 +18,7 @@ pec_l <- function(w, ttc){
   #
   # }
 
-  # responsability bounds are defined in the unit interval
+  # responsibility bounds are defined in the unit interval
   l <- 0
 
   for 1:length(w) - 1
@@ -40,5 +40,5 @@ pec_l <- function(w, ttc){
 
 }
 
-# # given the pec and a vector of responsability bounds l, determine optimal employment levels w
+# # given the pec and a vector of responsibility bounds l, determine optimal employment levels w
 # pec_w
