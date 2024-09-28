@@ -1,44 +1,54 @@
 # proportional employment condition (pec)
 # given the pec and a vector of employment levels w, determine optimal responsibility bounds l
-pec_l <- function(w, ttc){
+pec_l <- function(
+    lmin = 0,
+    wtilde = 1,
+    ttc = function(l){l}
+){
 
   # assert args
-  stopifnot("'w' must be a non-negative numeric vector of employment levels.") = all(
-    is.numeric(w),
-    w >= 0
+  stopifnot(
+    "'lmin' must be a lower responsability bound in the unit interval" =
+      all(
+        is.numeric(lmin)
+        , lmin >= 0
+        , lmin < 1
+      )
   )
 
-  # # solve pec for l
-  # pec_solve_l <- function(w,){
-  #
-  #   # wtilde
-  #   w <- w / sum(w)
-  #
-  #
-  #
-  # }
+  stopifnot(
+    "'wtilde' must be a relative employment level in the unit interval" =
+      all(
+        is.numeric(wtilde)
+        , lmin >= 0
+        , lmin <= 1
+      )
+  )
 
-  # responsibility bounds are defined in the unit interval
-  l <- 0
+  stopifnot("'ttc' must be a task duration function defined in the unit interval." = is.function(ttc))
 
-  for 1:length(w) - 1
+  # solve integral equation for lmax
+  uniroot(
+    function(lmax){
 
-  integrate(ttc, from = l, to = l)
+      integrate(
+        function(l){ta(l, ttc)}
+        , lower = lmin
+        , upper = lmax
+      )$value - wtilde
 
-  -> lbounds
+    }
+    , interval = c(-0.1,1.1)
+  )$root -> lmax
 
-  # last job subtype is by defintion perfectly qualified
-  c(lbounds, 1) -> lbounds
+  pmax(lmax, 0) -> lmax
+  pmin(lmax, 1) -> lmax
 
-
-  # # apply pec
-  # sapply(
-  #   1:length(w)
-  # )
-
-
+  # return optimal responsibility upper bound
+  return(lmax)
 
 }
 
-# # given the pec and a vector of responsibility bounds l, determine optimal employment levels w
-# pec_w
+# given the pec and a vector of responsibility bounds l, determine optimal employment levels w
+# by the proportional employment condition, relative employment levels for all job subtypes are the aggregate time allocation of their respective tasks
+pec_w <- Omega(lmin, lmax, ttc)
