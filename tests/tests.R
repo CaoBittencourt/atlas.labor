@@ -127,11 +127,15 @@ vstilde(
 pec_l(lmin = 0, wtilde = 1, ttc)
 pec_l(lmin = 0, wtilde = 0.67, ttc)
 
+wtilde_q <- runif(100)
+wtilde_q <- wtilde_q / sum(wtilde_q)
+
+pec_lvec(wtilde_q, ttc)
+
 pec_w(0, 1, ttc)
 
-
-# minimum required productivity distribution
-l_bounds <- seq(0, 1, length.out = sample(seq(1, n + 1), 1))[-1]
-
-dist_Tmin()
-
+# # minimum required productivity distribution
+# l_bounds <- seq(0, 1, length.out = sample(seq(1, n + 1), 1))[-1]
+#
+# dist_Tmin()
+#

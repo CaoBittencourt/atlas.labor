@@ -20,8 +20,8 @@ pec_l <- function(
     "'wtilde' must be a relative employment level in the unit interval" =
       all(
         is.numeric(wtilde)
-        , lmin >= 0
-        , lmin <= 1
+        , wtilde >= 0
+        , wtilde <= 1
       )
   )
 
@@ -35,7 +35,7 @@ pec_l <- function(
         function(l){ta(l, ttc)}
         , lower = lmin
         , upper = lmax
-      )$value - wtilde
+      )$value - wtilde[[1]]
 
     }
     , interval = c(-0.1,1.1)
@@ -49,6 +49,37 @@ pec_l <- function(
 
 }
 
+# vectorized pec to find all optimal responsibility bounds
+pec_lvec <- function(wtilde, ttc){
+
+  stopifnot(
+    'wtilde' = all(
+      is.numeric(wtilde),
+      sum(wtilde) == 1,
+      wtilde >= 0,
+      wtilde <= 1
+    )
+  )
+
+  lmin <- 0
+  v <- 1
+
+  for(wtilde_v in wtilde){
+
+    c(lmin, pec_l(lmin[[v]], wtilde_v, ttc)) -> lmin
+
+    v <- v + 1
+
+  }
+
+  lmin <- lmin[-1]
+  lmin[length(lmin)] <- 1
+
+  return(lmin)
+
+}
+
 # given the pec and a vector of responsibility bounds l, determine optimal employment levels w
 # by the proportional employment condition, relative employment levels for all job subtypes are the aggregate time allocation of their respective tasks
-pec_w <- Omega
+# therefore, this function is not needed:
+# pec_w <- Omega
