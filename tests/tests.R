@@ -1,4 +1,4 @@
-# imports
+# setup
 setwd('/home/Cao/Storage/github/atlas.labor/')
 source('tests/install.R')
 source('tests/data.R')

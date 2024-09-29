@@ -30,7 +30,6 @@ u_qk <- runif(n)
 ttc <- function(l){exp(l)}
 list_ttc <- replicate(n, ttc)
 
-# wtilde_q <- c(rlnorm(7), rlogis(7), runif(7))
-wtilde_q <- rbeta(19, 3,3, 1) * 10:1
+wtilde_q <- c(rlnorm(7), rlogis(7), runif(7))
 wtilde_q <- wtilde_q - min(wtilde_q)
 wtilde_q <- wtilde_q / sum(wtilde_q)
