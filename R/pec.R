@@ -78,8 +78,3 @@ pec_lvec <- function(wtilde, ttc){
   return(lmin)
 
 }
-
-# given the pec and a vector of responsibility bounds l, determine optimal employment levels w
-# by the proportional employment condition, relative employment levels for all job subtypes are the aggregate time allocation of their respective tasks
-# therefore, this function is not needed:
-# pec_w <- Omega

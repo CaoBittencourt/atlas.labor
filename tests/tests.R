@@ -1,11 +1,12 @@
 # imports
-setwd('/home/Cao/Storage/github/atlas.labor/R')
-source('./ta.R')
-source('./Omega.R')
-source('./wtilde.R')
-source('./vstilde.R')
-source('./pec.R')
-# source('./require.R')
+setwd('/home/Cao/Storage/github/atlas.labor/')
+source('tests/data.R')
+source('R/ta.R')
+source('R/Omega.R')
+source('R/wtilde.R')
+source('R/vstilde.R')
+source('R/pec.R')
+source('R/req.R')
 
 # library(devtools)
 # c(
@@ -33,33 +34,6 @@ source('./pec.R')
 # )
 
 
-# data
-set.seed(777)
-
-n <- 873
-W <- 167000000
-w <- rlnorm(873)
-w <- W * w / sum(w)
-w <- ceiling(w)
-
-T_k <- rlogis(n)
-T_k <- T_k - min(T_k)
-T_k <- T_k / max(T_k)
-
-h_k <- rlogis(n)
-h_k <- h_k - min(h_k)
-h_k <- h_k / max(h_k)
-
-T_q <- rlogis(n)
-T_q <- T_q - min(T_q)
-T_q <- T_q / max(T_q)
-
-h_q <- rlogis(n)
-h_q <- h_q - min(h_q)
-h_q <- h_q / max(h_q)
-
-u_qq <- runif(n)
-u_qk <- runif(n)
 
 ggplot2::qplot(T_k, geom = 'density')
 ggplot2::qplot(T_q, geom = 'density')
@@ -70,9 +44,6 @@ ggplot2::qplot(h_q, geom = 'density')
 ggplot2::qplot(u_qq, geom = 'density')
 ggplot2::qplot(u_qk, geom = 'density')
 
-# task duration function
-ttc <- function(l){exp(l)}
-list_ttc <- replicate(n, ttc)
 plot(ttc, 0, 1)
 
 # employability
@@ -127,16 +98,9 @@ vstilde(
 pec_l(lmin = 0, wtilde = 1, ttc)
 pec_l(lmin = 0, wtilde = 0.67, ttc)
 
-# wtilde_q <- rlogis(19)
-wtilde_q <- c(rlnorm(7), rlogis(7), runif(7))
-wtilde_q <- wtilde_q - min(wtilde_q)
-wtilde_q <- wtilde_q / sum(wtilde_q)
-
 pec_lvec(wtilde_q, ttc)
-ggplot2::qplot(pec_lvec(wtilde_q, ttc) * wtilde_q, geom = 'density')
+ggplot2::qplot(pec_lvec(wtilde_q, ttc), weight= wtilde_q, geom = 'density')
 
-# # minimum required productivity distribution
-# l_bounds <- seq(0, 1, length.out = sample(seq(1, n + 1), 1))[-1]
-#
-# dist_Tmin()
-#
+# minimum required productivity distribution
+dist_req(Tmin = pec_lvec(wtilde_q, ttc), w = wtilde_q)
+density(pec_lvec(wtilde_q, ttc), weights = wtilde_q, from = 0, to = 1, n = sample(w, 1)) -> dsdds
