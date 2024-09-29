@@ -1,2 +1,4 @@
 [x] vectorizing ttc in Omega function results in subset bugs when ttc is not a list of functions
 [x] should Omega even be vectorized on ttc?
+
+[?] investigate kde quantiles and mock data

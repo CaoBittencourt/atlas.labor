@@ -1,10 +1,10 @@
 # minimum productivity requirements distribution
-kde_req <- function(Tmin, wtilde_q, w_q = 1000){
+kde_req <- function(Tmin, wtilde_q, w_q = 1024){
 
   # assert args
   stopifnot(
-    "'Tmin' and 'w' must be the same length." =
-      c(length(Tmin) == length(w))
+    "'Tmin' and 'wtilde_q' must be the same length." =
+      c(length(Tmin) == length(wtilde_q))
   )
 
   stopifnot(
@@ -29,6 +29,6 @@ kde_req <- function(Tmin, wtilde_q, w_q = 1000){
   )
 
   # return kernel density estimation of productivity requirements
-  return(density(Tmin, weights = w, from = 0, to = 1))
+  return(density(Tmin, weights = wtilde_q, from = 0, to = 1, n = w_q))
 
 }
