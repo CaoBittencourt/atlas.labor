@@ -2,3 +2,13 @@
 [x] should Omega even be vectorized on ttc?
 
 [?] investigate kde quantiles and mock data
+
+[ ] remove assert args from internal functions
+    create type-safe versions of functions for the end user,
+    including a version with more expressive names
+
+    learn how to export only a few functions from package (i.e. modular R)
+
+[ ] Omega_vec: remove lmin, lmax and infer add lbound_vec as arg
+    infer lmin, lmax for each job subtype by shifting indexes in lbound_vec
+    i.e. for all v in 1:length(lbound_vec) lmin[v] = lbound_vec[v-1] and lmax[v] = lbound_vec[v]

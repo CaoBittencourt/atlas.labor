@@ -20,8 +20,8 @@ kde_req <- function(Tmin, wtilde_q, w_q = 1024){
       all(
         is.numeric(wtilde_q),
         wtilde_q[[1]] <= 1,
-        wtilde_q[[1]] >= 0,
-        sum(wtilde_q) == 1
+        wtilde_q[[1]] >= 0
+        # , sum(wtilde_q) == 1
       ))
 
   stopifnot(

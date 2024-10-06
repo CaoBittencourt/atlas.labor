@@ -6,39 +6,41 @@ pec_l <- function(
     ttc = function(l){l}
 ){
 
-  # assert args
-  stopifnot(
-    "'lmin' must be a lower responsability bound in the unit interval" =
-      all(
-        is.numeric(lmin)
-        , lmin >= 0
-        , lmin < 1
-      )
-  )
-
-  stopifnot(
-    "'wtilde' must be a relative employment level in the unit interval" =
-      all(
-        is.numeric(wtilde)
-        , wtilde >= 0
-        , wtilde <= 1
-      )
-  )
-
-  stopifnot("'ttc' must be a task duration function defined in the unit interval." = is.function(ttc))
+  # # assert args
+  # stopifnot(
+  #   "'lmin' must be a lower responsability bound in the unit interval" =
+  #     all(
+  #       is.numeric(lmin)
+  #       , lmin >= 0
+  #       , lmin < 1
+  #     )
+  # )
+  #
+  # stopifnot(
+  #   "'wtilde' must be a relative employment level in the unit interval" =
+  #     all(
+  #       is.numeric(wtilde)
+  #       , wtilde >= 0
+  #       , wtilde <= 1
+  #     )
+  # )
+  #
+  # stopifnot("'ttc' must be a task duration function defined in the unit interval." = is.function(ttc))
 
   # solve integral equation for lmax
   uniroot(
     function(lmax){
 
-      integrate(
+      cubintegrate(
         function(l){ta(l, ttc)}
         , lower = lmin
         , upper = lmax
-      )$value - wtilde[[1]]
+      )$integral - wtilde[[1]]
 
     }
-    , interval = c(-0.1,1.1)
+    , interval = c(0,1)
+    # , interval = c(-.5,1.5)
+    , extendInt = 'yes'
   )$root -> lmax
 
   pmax(lmax, 0) -> lmax
@@ -52,14 +54,14 @@ pec_l <- function(
 # vectorized pec to find all optimal responsibility bounds
 pec_lvec <- function(wtilde, ttc){
 
-  stopifnot(
-    'wtilde' = all(
-      is.numeric(wtilde),
-      sum(wtilde) == 1,
-      wtilde >= 0,
-      wtilde <= 1
-    )
-  )
+  # stopifnot(
+  #   "'wtilde must be a numeric vector between 0 and 1, which sums to 1.'" = all(
+  #     is.numeric(wtilde),
+  #     # sum(wtilde) == 1,
+  #     wtilde >= 0,
+  #     wtilde <= 1
+  #   )
+  # )
 
   lmin <- 0
   v <- 1
