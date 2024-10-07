@@ -8,6 +8,9 @@
 
 [x] vectorize pec
 
-[ ] monte carlo method for optimizing p_q, w_vq
+[x] monte carlo method for optimizing w_vq
+[ ] add warning about algorithm duration when p_q is large
+[ ] find a method to reduce algorithm duration
+[ ] monte carlo method for optimizing p_q
 
 [ ] surpress warnings in kde function

@@ -1,4 +1,5 @@
 # minimum productivity requirements distribution
+#' @export
 kde_req <- function(Tmin, wtilde_q, w_q = 1024){
 
   # assert args

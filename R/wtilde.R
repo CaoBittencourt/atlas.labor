@@ -1,4 +1,5 @@
 # employability
+#' @export
 wtilde <- function(h_k, T_k, ttc, w, p = Inf, agg = T){
 
   if(is.function(ttc)){

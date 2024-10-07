@@ -1,4 +1,5 @@
-
+# competitiveness
+#' @export
 vstilde <- function(h_q, T_q, u_qk, u_qq, ttc, w, p = Inf, agg = T){
 
   if(is.function(ttc)){

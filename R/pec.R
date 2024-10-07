@@ -52,6 +52,7 @@ pec_l <- function(
 }
 
 # vectorized pec to find all optimal responsibility bounds
+#' @export
 pec_lvec <- function(wtilde, ttc){
 
   # stopifnot(
